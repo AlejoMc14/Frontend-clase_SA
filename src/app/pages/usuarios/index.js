@@ -1,6 +1,8 @@
+// pages/usuarios/index.js
 import Link from 'next/link';
-import PerfilUsuarioMini from '../../components/usuarios/PerfilUsuarioMini';
-
+// Asegúrate que la ruta al componente sea correcta
+import PerfilUsuarioMini from
+  '../../components/usuarios/PerfilUsuarioMini';
 function PaginaListadoUsuarios({ usuarios }) {
   return (
     <div>
@@ -16,17 +18,26 @@ function PaginaListadoUsuarios({ usuarios }) {
       <br />
       <Link href="/">Volver al Inicio</Link>
       <br />
-      <Link href="/usuarios/perfil/usuarioEjemplo">Ver Perfil de 'usuarioEjemplo'</Link>
+      <Link href="/usuarios/perfil/usuarioEjemplo">Ver Perfil de
+        'usuarioEjemplo'</Link>
     </div>
   );
 }
-
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  // Simulación de carga de datos en cada request (SSR)
   const usuarios = [
-    { id: 'u001', username: 'usuarioEjemplo', nombre: 'Usuario Ejemplo', email: 'ejemplo@test.com' },
-    { id: 'u002', username: 'anaCoder', nombre: 'Ana Coder', email: 'ana@test.com' },
+    {
+      id: 'u001', username: 'usuarioEjemplo', nombre: 'Usuario Ejemplo',
+      email: 'ejemplo@test.com'
+    },
+    {
+      id: 'u002', username: 'anaCoder', nombre: 'Ana Coder', email:
+        'ana@test.com'
+    },
   ];
-  return { props: { usuarios } };
+  return {
+    props: {
+      usuarios,
+    },
+  };
 }
-
-export default PaginaListadoUsuarios;

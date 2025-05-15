@@ -4,8 +4,8 @@ import Link from 'next/link';
 function PaginaPerfilUsuario({ usuario }) {
   const router = useRouter();
   const { username } = router.query;
-  if (router.isFallback) { // Necesario si getStaticPaths tiene fallback:true o 'blocking'
-
+  if (router.isFallback) { // Necesario si getStaticPaths tiene fallback: true o 'blocking'
+   
     return <div>Cargando perfil...</div>;
   }
   if (!usuario) {
@@ -69,13 +69,13 @@ export async function getServerSideProps(context) {
     },
   };
   const usuario = usuariosSimulados[username] || null;
-  // Si el usuario no se encuentra, puedes redirigir o devolver propsindicando que no se encontró
+ // Si el usuario no se encuentra, puedes redirigir o devolver propsindicando que no se encontró
 
   if (!usuario) {
-    // Opción 1: Devolver props para que la página maneje el "noencontrado"
+ // Opción 1: Devolver props para que la página maneje el "noencontrado"
 
     return { props: { usuario: null } };
-    // Opción 2: Devolver notFound para mostrar una página 404 (más comúncon getStaticProps)
+ // Opción 2: Devolver notFound para mostrar una página 404 (más comúncon getStaticProps)
 
     // return { notFound: true };
   }
